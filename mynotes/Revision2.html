@@ -1,0 +1,858 @@
+mysql> show databases;
++--------------------+
+| Database |
++--------------------+
+| information_schema |
+| mysql |
+| performance_schema |
+| sys |
+| youtuber |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> create table students
+-> (
+-> name varchar(55),
+-> age int
+-> );
+ERROR 1046 (3D000): No database selected
+mysql> select database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near '' at line 1
+mysql> select databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near 'databases' at line 1
+mysql> show databses;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near 'databses' at line 1
+mysql> show databases;
++--------------------+
+| Database |
++--------------------+
+| information_schema |
+| mysql |
+| performance_schema |
+| sys |
+| youtuber |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use youtuber;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| youtuber |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table students
+-> (
+-> name varchar(55),
+-> age int
+-> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_youtuber |
++--------------------+
+| students |
++--------------------+
+1 row in set (0.02 sec)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name | varchar(55) | YES | | NULL | |
+| age | int | YES | | NULL | |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> drop table students;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table students(
+-> id int,
+-> name varchar(55),
+-> class int
+-> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_youtuber |
++--------------------+
+| students |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id | int | YES | | NULL | |
+| name | varchar(55) | YES | | NULL | |
+| class | int | YES | | NULL | |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near '' at line 1
+mysql> insert into students
+-> (id, name, class)
+-> values(1, 'aryan', 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into students
+-> values(2, 'thapa',10)
+-> select * from students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near 'select * from students' at line 3
+mysql> show tables;
++--------------------+
+| Tables_in_youtuber |
++--------------------+
+| students |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from students;
++------+-------+-------+
+| id | name | class |
++------+-------+-------+
+| 1 | aryan | 10 |
++------+-------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into students
+-> (id, name, class)
+-> values (1, 'aryan' , 5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from students;
++------+-------+-------+
+| id | name | class |
++------+-------+-------+
+| 1 | aryan | 10 |
+| 1 | aryan | 5 |
++------+-------+-------+
+2 rows in set (0.00 sec)
+
+
+mysql> select * from students;
++------+-------+-------+
+| id | name | class |
++------+-------+-------+
+| 1 | aryan | 10 |
+| 1 | aryan | 5 |
++------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into students
+-> (id , name, class)
+-> values(1, 'vinod', 6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into students
+-> values(2, 'aryan', 7);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from students;
++------+-------+-------+
+| id | name | class |
++------+-------+-------+
+| 1 | aryan | 10 |
+| 1 | aryan | 5 |
+| 1 | vinod | 6 |
+| 2 | aryan | 7 |
++------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into students (id, name, class)
+-> values('timepass', 'thapatechnical' 5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near '5)' at line 2
+mysql> values ('timepass', 'thapatechnical' , 5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near '('timepass', 'thapatechnical' , 5)' at line 1
+mysql> insert into students (id, name, class)
+-> values ('thapa' , 6, 'timepass' );
+ERROR 1366 (HY000): Incorrect integer value: 'thapa' for column 'id' at row 1
+mysql> values ('thpapa', 5, 'aryan');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version
+for the right syntax to use near '('thpapa', 5, 'aryan')' at line 1
+mysql> select * from students;
++------+-------+-------+
+| id | name | class |
++------+-------+-------+
+| 1 | aryan | 10 |
+| 1 | aryan | 5 |
+| 1 | vinod | 6 |
+| 2 | aryan | 7 |
++------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into students (id, name, class)
+-> values ('timepass', 'thapa', 7);
+ERROR 1366 (HY000): Incorrect integer value: 'timepass' for column 'id' at row 1
+mysql> insert into students (id, name, class)
+-> values ('timepass','thpa' , 5);
+ERROR 1366 (HY000): Incorrect integer value: 'timepass' for column 'id' at row 1
+mysql> use youtuber;
+Database changed
+mysql> insert into students (id, name, class)
+-> values ('timepass' , 'aryan', 5);
+ERROR 1366 (HY000): Incorrect integer value: 'timepass' for column 'id' at row 1
+mysql> INSERT INTO students (id, name, class) VALUES (1, 'aryan', 5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show warnings;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO students (id, name, class) VALUES (1, 'aryan', 'virat');
+ERROR 1366 (HY000): Incorrect integer value: 'virat' for column 'class' at row 1
+mysql> show warnings;
++-------+------+--------------------------------------------------------------+
+| Level | Code | Message |
++-------+------+--------------------------------------------------------------+
+| Error | 1366 | Incorrect integer value: 'virat' for column 'class' at row 1 |
++-------+------+--------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_youtuber |
++--------------------+
+| students |
++--------------------+
+1 row in set (0.06 sec)
+
+mysql> show databases;
++--------------------+
+| Database |
++--------------------+
+| information_schema |
+| mysql |
+| performance_schema |
+| sys |
+| youtuber |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_youtuber |
++--------------------+
+| students |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id | int | YES | | NULL | |
+| name | varchar(55) | YES | | NULL | |
+| class | int | YES | | NULL | |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> insert into students (id , name) values(4 , 'kuch v');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from students;
++------+--------+-------+
+| id | name | class |
++------+--------+-------+
+| 1 | aryan | 10 |
+| 1 | aryan | 5 |
+| 1 | vinod | 6 |
+| 2 | aryan | 7 |
+| 1 | aryan | 5 |
+| 4 | kuch v | NULL |
++------+--------+-------+
+6 rows in set (0.00 sec)
+
+mysql> create table stunull
+-> (
+-> id int not null,
+-> name varchar(55)not null
+-> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> desc stunull;
++-------+-------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id | int | NO | | NULL | |
+| name | varchar(55) | NO | | NULL | |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql>
+
+<!-- add colummn -->
+
+mysql> alter table studef add class int ;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0 Duplicates: 0 Warnings: 0
+
+mysql> desc studef;
++-------+-------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id | int | NO | | 0 | |
+| name | varchar(55) | NO | | unnamed | |
+| class | int | YES | | NULL | |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+<!-- *******************drop column************************ -->
+
+mysql> alter table studef drop column class;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0 Duplicates: 0 Warnings: 0
+
+mysql> desc studef;
++-------+-------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id | int | NO | | 0 | |
+| name | varchar(55) | NO | | unnamed | |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+<!-- ***************************primary key****************** -->
+
+insert into stud_unique (stud_id,name,age)
+-> values (3, 'viku', 30);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into stud_unique (stud_id, name, age)
+-> values(5, 'ary', 34);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from stud_unique;
++---------+-------+------+
+| stud_id | name | age |
++---------+-------+------+
+| 1 | vinod | 25 |
+| 2 | aryan | 25 |
+| 3 | viku | 30 |
+| 5 | ary | 34 |
++---------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE stud_auto
+-> (stud_id INT NOT NULL AUTO_INCREMENT
+-> ,name VARCHAR(100)
+-> ,age INT
+-> ,PRIMARY KEY (stud_id) );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc stud_auto;
++---------+--------------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+----------------+
+| stud_id | int | NO | PRI | NULL | auto_increment |
+| name | varchar(100) | YES | | NULL | |
+| age | int | YES | | NULL | |
++---------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+<!-- auto_increment -->
+
+CREATE TABLE stud_auto
+-> (stud_id INT NOT NULL AUTO_INCREMENT
+-> ,name VARCHAR(100)
+-> ,age INT
+-> ,PRIMARY KEY (stud_id) );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc stud_auto;
++---------+--------------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+----------------+
+| stud_id | int | NO | PRI | NULL | auto_increment |
+| name | varchar(100) | YES | | NULL | |
+| age | int | YES | | NULL | |
++---------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into stud_auto (name,age) values ('aryan', 25);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stud_auto (name,age) values ('aan', 35);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from stud_auto;
++---------+-------+------+
+| stud_id | name | age |
++---------+-------+------+
+| 1 | aryan | 25 |
+| 2 | aan | 35 |
++---------+-------+------+
+2 rows in set (0.00 sec)
+
+
+<!-- *************************talbes******************************************** -->
+
+desc students;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+----------------+
+| id | int | NO | PRI | NULL | auto_increment |
+| fname | varchar(55) | YES | | NULL | |
+| lname | varchar(55) | YES | | NULL | |
+| age | int | YES | | NULL | |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.02 sec)
+
+mysql> select * from students;
+Empty set (0.03 sec)
+
+mysql> insert into students (fname, lname, age) values ('aryan','raj',19), ('arya','rj',20),
+('ary','rajj',21),('ar','rah',22),
+-> ('rahul','rajj',20);
+Query OK, 5 rows affected (0.03 sec)
+Records: 5 Duplicates: 0 Warnings: 0
+
+mysql> select * from students;
++----+-------+-------+------+
+| id | fname | lname | age |
++----+-------+-------+------+
+| 1 | aryan | raj | 19 |
+| 2 | arya | rj | 20 |
+| 3 | ary | rajj | 21 |
+| 4 | ar | rah | 22 |
+| 5 | rahul | rajj | 20 |
++----+-------+-------+------+
+5 rows in set (0.00 sec)
+
+<!--*********************************** select age 20*********************************** -->
+
+select * from students where age = 20;
++----+-------+-------+------+
+| id | fname | lname | age |
++----+-------+-------+------+
+| 2 | arya | rj | 20 |
+| 5 | rahul | rajj | 20 |
++----+-------+-------+------+
+2 rows in set (0.00 sec)
+
+
+
+<!-- *****************************select fname lname************************************* -->
+
+mysql> select fname, lname from students where age = 20;
++-------+-------+
+| fname | lname |
++-------+-------+
+| arya | rj |
+| rahul | rajj |
++-------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
+
+
+
+<!--************************ update age********************************************* -->
+
+
+mysql> UPDATE students SET age = 22
+-> where fname = 'arya';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> select * from students;
++----+-------+-------+------+
+| id | fname | lname | age |
++----+-------+-------+------+
+| 1 | aryan | raj | 19 |
+| 2 | arya | rj | 22 |
+| 3 | ary | rajj | 21 |
+| 4 | ar | rah | 22 |
+| 5 | rahul | rajj | 20 |
++----+-------+-------+------+
+5 rows in set (0.00 sec)
+
+
+
+<!-- *************************2nd method -->
+UPDATE students set age = 36 where id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from students;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  1 | aryan | raj   |   19 |
+|  2 | arya  | rj    |   36 |
+|  3 | ary   | rajj  |   21 |
+|  4 | ar    | rah   |   22 |
+|  5 | rahul | rajj  |   20 |
++----+-------+-------+------+
+5 rows in set (0.00 sec)
+
+
+
+<!--**************************** select and delete *********************************-->
+
+
+mysql> select * from students where fname = 'arya';
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  2 | arya  | rj    |   36 |
++----+-------+-------+------+
+1 row in set (0.01 sec)
+
+mysql> delete from students where fname = 'arya';
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  select * from students;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  1 | aryan | raj   |   19 |
+|  3 | ary   | rajj  |   21 |
+|  4 | ar    | rah   |   22 |
+|  5 | rahul | rajj  |   20 |
++----+-------+-------+------+
+4 rows in set (0.00 sec)
+
+ <!-- distinct double name ko v single -->
+
+mysql> select distinct  fname from students;
++-------+
+| fname |
++-------+
+| aryan |
+| ary   |
+| ar    |
+| rahul |
++-------+
+4 rows in set (0.01 sec)
+
+<!-- *************************ASCENDING ORDER AGE************************** -->
+
+mysql> select age from students order by age;
++------+
+| age  |
++------+
+|   19 |
+|   20 |
+|   21 |
+|   22 |
++------+
+4 rows in set (0.01 sec)
+
+
+
+<!-- ******************************ASCENDING ORDER FNAME******************** -->
+
+mysql> select fname from students  order by fname;
++-------+
+| fname |
++-------+
+| ar    |
+| ary   |
+| aryan |
+| rahul |
++-------+
+4 rows in set (0.01 sec)
+
+<!--************************* limit means only 2 **************************-->
+
+mysql> select fname from  students order by fname limit 2;
++-------+
+| fname |
++-------+
+| ar    |
+| ary   |
++-------+
+2 rows in set (0.01 sec)
+  
+<!-- ***************************check names *******************************-->
+mysql> select fname from students where  fname like '%ry%';
++-------+
+| fname |
++-------+
+| aryan |
+| ary   |
++-------+
+2 rows in set (0.02 sec)
+
+<!--*************************** maximum AGE******************************** -->
+
+mysql>  select max(age) from students;
++----------+
+| max(age) |
++----------+
+|       22 |
++----------+
+1 row in set (0.01 sec)
+
+
+<!--******************** minimum age************************************ -->
+
+mysql>  select max(age) from students;
++----------+
+| max(age) |
++----------+
+|       22 |
++----------+
+1 row in set (0.01 sec)
+
+
+<!-- ************************sum age ***********************************-->
+
+mysql> select sum(age) from students;
++----------+
+| sum(age) |
++----------+
+|       82 |
++----------+
+1 row in set (0.00 sec)
+ 
+
+<!--***************** count id ***********************************-->
+
+mysql>  select count(id) from students;
++-----------+
+| count(id) |
++-----------+
+|         4 |
++-----------+
+1 row in set (0.00 sec)
+
+<!--*********************** average age******************************* -->
+
+mysql>  select count(id) from students;
++-----------+
+| count(id) |
++-----------+
+|         4 |
++-----------+
+1 row in set (0.00 sec)
+
+<!-- ********************************select age******************************** -->
+
+mysql>  select * from students where  age = 20;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  5 | rahul | rajj  |   20 |
++----+-------+-------+------+
+1 row in set (0.01 sec)
+
+<!-- *****************************not select*********************************** -->
+
+mysql> select * from students where age != 20;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  1 | aryan | raj   |   19 |
+|  3 | ary   | rajj  |   21 |
+|  4 | ar    | rah   |   22 |
++----+-------+-------+------+
+
+3 rows in set (0.00 sec)
+
+
+ <!--*************************** age > 19************************************* -->
+
+ mysql> select * from students where age > 19;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  3 | ary   | rajj  |   21 |
+|  4 | ar    | rah   |   22 |
+|  5 | rahul | rajj  |   20 |
++----+-------+-------+------+
+
+
+
+<!-- ********************************age>=******************************** -->
+
+mysql> select * from students where age >= 19;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  1 | aryan | raj   |   19 |
+|  3 | ary   | rajj  |   21 |
+|  4 | ar    | rah   |   22 |
+|  5 | rahul | rajj  |   20 |
++----+-------+-------+------+
+4 rows in set (0.00 sec)
+
+
+
+<!-- *************************AGE BETWWEEN 19 AND 22 ***************************-->
+
+
+mysql>  select *  from students where age between 19 and 22;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  1 | aryan | raj   |   19 |
+|  3 | ary   | rajj  |   21 |
+|  4 | ar    | rah   |   22 |
+|  5 | rahul | rajj  |   20 |
++----+-------+-------+------+
+4 rows in set (0.01 sec)
+
+
+
+mysql>  select * from students where age <= 25 && age >= 19;
++----+-------+-------+------+
+| id | fname | lname | age  |
++----+-------+-------+------+
+|  1 | aryan | raj   |   19 |
+|  3 | ary   | rajj  |   21 |
+|  4 | ar    | rah   |   22 |
+|  5 | rahul | rajj  |   20 |
++----+-------+-------+------+
+4 rows in set, 1 warning (0.00 sec)
+
+
+
+<!--**************************** concat ***********************************-->
+
+mysql> select concat('aryan',' ', 'yadav');
++------------------------------+
+| concat('aryan',' ', 'yadav') |
++------------------------------+
+| aryan yadav                  |
++------------------------------+
+1 row in set (0.00 sec)
+
+
+<!-- ********************name and reverse************************************ -->
+
+mysql> select concat('aryan',' ', 'yadav');
++------------------------------+
+| concat('aryan',' ', 'yadav') |
++------------------------------+
+| aryan yadav                  |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select reverse('aryan yadav');
++------------------------+
+| reverse('aryan yadav') |
++------------------------+
+| vaday nayra            |
++------------------------+
+
+
+
+<!-- ***************************fname +  lname *******************************************-->
+
+
+mysql> select concat(fname ,' ', lname) from students as fullname;
++---------------------------+
+| concat(fname ,' ', lname) |
++---------------------------+
+| aryan raj                 |
+| ary rajj                  |
+| ar rah                    |
+| rahul rajj                |
++---------------------------+
+4 rows in set (0.01 sec)
+
+
+
+<!--***************************** reverse *****************************************-->
+
+mysql> select concat('aryan ' 'ki  ' ,reverse('aryan')) as palindrom;
++-----------------+
+| palindrom       |
++-----------------+
+| aryan ki  nayra |
++-----------------+
+1 row in set (0.00 sec)
+
+<!--**************************** upper *Z******************************-->
+
+
+
+mysql> select upper('thapa');
++----------------+
+| upper('thapa') |
++----------------+
+| THAPA          |
++----------------+
+1 row in set (0.01 sec)
+
+
+<!-- *********************create table ************************************** -->
+
+
+-> ^C
+mysql> create table aryan(
+    -> name varchar(55),
+    -> dob date,dot time,
+    -> bt datetime );
+Query OK, 0 rows affected (0.09 sec)
+
+
+
+mysql> insert into aryan values ('aryaa','2004-08-10' ,
+    -> '05:05:05' , '2004-08-10 05:05:05');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from aryan;
++-------+------------+----------+---------------------+
+| name  | dob        | dot      | bt                  |
++-------+------------+----------+---------------------+
+| aryaa | 2004-08-10 | 05:05:05 | 2004-08-10 05:05:05 |
++-------+------------+----------+---------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+<!-- **********************create table aryan now date()************************* -->
+
+mysql> insert into aryan values ('rahul',curdate(),
+    -> curtime() , now() );
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from aryan;
++-------+------------+----------+---------------------+
+| name  | dob        | dot      | bt                  |
++-------+------------+----------+---------------------+
+| aryaa | 2004-08-10 | 05:05:05 | 2004-08-10 05:05:05 |
+| rahul | 2023-05-13 | 11:32:34 | 2023-05-13 11:32:34 |
++-------+------------+----------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql>
+
+
+
+<!-- create table customers -->
+
+
+mysql> create table customers ( cid int not null auto_increment
+    -> primary key, cname varchar(55), email varchar(100));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc customers;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| cid   | int          | NO   | PRI | NULL    | auto_increment |
+| cname | varchar(55)  | YES  |     | NULL    |                |
+| email | varchar(100) | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+3 rows in set (0.02 sec)
+
