@@ -1,0 +1,313 @@
+mysql> create database Movies_database;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| movies_database    |
+| mysql              |
+| performance_schema |
+| sys                |
+| youtuber           |
++--------------------+
+6 rows in set (0.04 sec)
+
+mysql> use movies_database;
+Database changed
+mysql> drop database movies_database;
+Query OK, 0 rows affected (0.05 sec)
+
+
+
+<!-- ***************************create************************************* -->
+
+
+
+mysql> create database movies_database;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use movies_database;
+Database changed
+mysql> create table movies (NAME VARCHAR(100), Rating INTEGER);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> Show tables;
++---------------------------+
+| Tables_in_movies_database |
++---------------------------+
+| movies                    |
++---------------------------+
+1 row in set (0.02 sec)
+
+mysql> insert into movies(Name , Rating) values("AVENGERS", 5);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into movies(Name , Rating) values("AVENGERSEND", 5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM movies;
++-------------+--------+
+| NAME        | Rating |
++-------------+--------+
+| AVENGERS    |      5 |
+| AVENGERSEND |      5 |
++-------------+--------+
+2 rows in set (0.00 sec)
+
+
+
+<!-- ****************************create table actors**************************************** -->
+
+
+mysql> create table Actors(Firstname varchar(20), Lastname varchar(20), Gender Varchar(10), Networth Integer);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_movies_pw |
++---------------------+
+| actors              |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO Actors (firstname ,Lastname, Gender, Networth) Values("aryan" ,"yadav","male", 500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actors (firstname ,Lastname, Gender, Networth) Values("Rahul" ,"yadav","male", 200);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> INSERT INTO Actors (firstname ,Lastname, Gender, Networth) Values ("ankut", "sharms", "male", 200),("ankit","yadav","male",500);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from Actors;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| aryan     | yadav    | male   |      500 |
+| Rahul     | yadav    | male   |      200 |
+| ankut     | sharms   | male   |      200 |
+| ankit     | yadav    | male   |      500 |
++-----------+----------+--------+----------+
+4 rows in set (0.00 sec)
+
+
+
+
+<!--******************************** how to delete in mysql**************************-->
+
+<!-- \! cls -->
+
+
+<!-- *********************************500 equal and greater than***************************** -->
+
+
+mysql> select * from Actors where Networth >= 500;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| aryan     | yadav    | male   |      500 |
+| ankit     | yadav    | male   |      500 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+
+
+mysql>  select * from Actors where Networth > 200;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| aryan     | yadav    | male   |      500 |
+| ankit     | yadav    | male   |      500 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+
+
+
+<!-- *******************************female************************************* -->
+
+
+mysql> select * from Actors Where Gender  = "female";
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| ankut     | sharms   | female |      200 |
+| ankit     | yadav    | female |      500 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+
+<!--*********************************** select*******************************8  -->
+
+
+mysql> select Firstname , Lastname from actors Where Gender = "Female";
++-----------+----------+
+| Firstname | Lastname |
++-----------+----------+
+| ankut     | sharms   |
+| ankit     | yadav    |
++-----------+----------+
+2 rows in set (0.00 sec)
+
+
+
+<!-- *******************************starting letter ****************************-->
+
+
+mysql> select * from Actors where firstname like "ar%";
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| aryan     | yadav    | male   |      500 |
++-----------+----------+--------+----------+
+1 row in set (0.01 sec)
+
+mysql> select * from Actors where firstname like "an%";
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| ankut     | sharms   | female |      200 |
+| ankit     | yadav    | female |      500 |
+| ANKIT     | Singh    | Male   |      900 |
+| ANKI      | Singh    | Male   |      900 |
++-----------+----------+--------+----------+
+4 rows in set (0.00 sec)
+
+
+
+mysql> select * from Actors where firstname like "%a%";
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| aryan     | yadav    | male   |      500 |
+| Rahul     | yadav    | male   |      200 |
+| ankut     | sharms   | female |      200 |
+| ankit     | yadav    | female |      500 |
+| RAHUL     | YADAV    | MALE   |      800 |
+| ANKIT     | Singh    | Male   |      900 |
+| ANKI      | Singh    | Male   |      900 |
++-----------+----------+--------+----------+
+7 rows in set (0.00 sec)
+
+
+
+
+<!--**************************** ASCENDING ORDER NUMBERS***************************** -->
+
+
+mysql> select * from Actors  Order By Networth ASC;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| Rahul     | yadav    | male   |      200 |
+| ankut     | sharms   | female |      200 |
+| aryan     | yadav    | male   |      500 |
+| ankit     | yadav    | female |      500 |
+| RAHUL     | YADAV    | MALE   |      800 |
+| ANKIT     | Singh    | Male   |      900 |
+| ANKI      | Singh    | Male   |      900 |
++-----------+----------+--------+----------+
+7 rows in set (0.01 sec)
+
+
+<!-- ***************************descending order by Networth ***************************-->
+
+mysql> select * from Actors  Order By Networth desc;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| ANKIT     | Singh    | Male   |      900 |
+| ANKI      | Singh    | Male   |      900 |
+| RAHUL     | YADAV    | MALE   |      800 |
+| aryan     | yadav    | male   |      500 |
+| ankit     | yadav    | female |      500 |
+| Rahul     | yadav    | male   |      200 |
+| ankut     | sharms   | female |      200 |
++-----------+----------+--------+----------+
+7 rows in set (0.00 sec)
+
+
+mysql> select * from  Actors WHERE Firstname  like "an%" order by networth ASC;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| ankut     | sharms   | female |      200 |
+| ankit     | yadav    | female |      500 |
+| ANKIT     | Singh    | Male   |      900 |
+| ANKI      | Singh    | Male   |      900 |
++-----------+----------+--------+----------+
+4 rows in set (0.00 sec)
+
+<!-- ******************************AR DESCENDING ************************************ -->
+
+mysql> Select * from Actors Where Firstname like "AN%" ORDER BY NETWORTH DESC;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| ANKIT     | Singh    | Male   |      900 |
+| ANKI      | Singh    | Male   |      900 |
+| ankit     | yadav    | female |      500 |
+| ankut     | sharms   | female |      200 |
++-----------+----------+--------+----------+
+4 rows in set (0.00 sec)
+
+
+
+<!-- **********************************limit 3 *************************************-->
+
+
+mysql> Select * from Actors limit 3;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| aryan     | yadav    | male   |      500 |
+| Rahul     | yadav    | male   |      200 |
+| ankut     | sharms   | female |      200 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+
+<!-- ***********************************limit 3************************* -->
+
+mysql> select * from actors limit 3 offset 0;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| aryan     | yadav    | male   |      500 |
+| Rahul     | yadav    | male   |      200 |
+| ankut     | sharms   | female |      200 |
++-----------+----------+--------+----------+
+
+
+<!-- ***********************************offset 2****************************** -->
+
+mysql> select * from Actors limit 3 offset 2;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| ankut     | sharms   | female |      200 |
+| ankit     | yadav    | female |      500 |
+| RAHUL     | YADAV    | MALE   |      800 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+
+
+<!-- **************************limit offset 3****************************** -->
+
+mysql> select * from Actors limit 3 offset 3;
++-----------+----------+--------+----------+
+| Firstname | Lastname | Gender | Networth |
++-----------+----------+--------+----------+
+| ankit     | yadav    | female |      500 |
+| RAHUL     | YADAV    | MALE   |      800 |
+| ANKIT     | Singh    | Male   |      900 |
++-----------+----------+--------+----------+
+
+
+
+                      
